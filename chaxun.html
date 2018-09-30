@@ -7,14 +7,22 @@
     <title></title>
     <link href="css/style.css" type="text/css" rel="stylesheet">
     <link href="css/iconfont.css" type="text/css" rel="stylesheet">
-    <link href="js/needcss/layer.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/public.css">
     <link rel="stylesheet" type="text/css" href="css/mobileSelect.css">
     <script src="js/iconfont.js" type="text/javascript"></script>
     <script src="js/mobileSelect.js" type="text/javascript"></script>
     <script src="js/layer.js"></script>
     <script src="js/jquery-2.2.0.min.js" type="text/javascript"></script>
-
+    <style>
+        address,#trigger3{    display: inline-block;
+            font-style: normal;}
+        #two{    display: inline-block;
+            background: rgba(51,153,255,1);
+            color: #fff;
+            padding: 0.1rem 0.5rem 0.2rem;
+            line-height: initial;}
+        .btn_chaxun{   font-weight: normal; }
+    </style>
 </head>
 <body>
 <div class="banner">
@@ -24,7 +32,7 @@
     <li class="sli">
         <ul>
             <li><i class="icon iconfont">&#xe6b0;</i></li>
-            <li><div id="one">济南<i class="icon iconfont">&#xe600;</i></div> </li>
+            <li><address id="one">济南</address><i class="icon iconfont">&#xe600;</i> </li>
         </ul>
     </li>
     <li class="sli">
@@ -37,7 +45,7 @@
     <li class="sli">
         <ul>
             <li><i class="icon iconfont">&#xe635;</i></li>
-            <li><div id="trigger3">小型车<i class="icon iconfont">&#xe600;</i></div></li>
+            <li><div id="trigger3">小型车</div><i class="icon iconfont">&#xe600;</i></li>
         </ul>
     </li>
     <li class="sli">
@@ -57,7 +65,8 @@
         </ul>
     </li>
 </ul>
-<a href="wzcx_list.html"><div class="btn">立即查询</div></a>
+<a href="wzcx_list.html"><div class="btn btn_chaxun">立即查询</div></a>
+<div class="licenseBox" style="display: none;"><h2 style="margin-bottom:15px; font-size:1.6rem;">车架号在哪？</h2><p><img src="images/1.png" class="img-full"></p></div>
 <script type="text/javascript">
     var weekdayArr2=['小型车','大型车'];
     //----------------------------------------------------------
@@ -69,27 +78,28 @@
         position:[2] //初始化定位 打开时默认选中的哪个  如果不填默认为0
     });
   //-----------地市车牌联动--------------
-    var strJson = [
-        {id:'鲁A',value:'济南市'},
-        {id:'鲁B',value:'青岛市'},
-        {id:'鲁C',value:'淄博市'},
-        {id:'鲁D',value:'枣庄市'},
-        {id:'鲁E',value:'东营市'},
-        {id:'鲁F',value:'烟台市'},
-        {id:'鲁G',value:'潍坊市'},
-        {id:'鲁H',value:'济宁市'},
-        {id:'鲁J',value:'泰安市'},
-        {id:'鲁K',value:'威海市'},
-        {id:'鲁L',value:'日照市'},
-        {id:'鲁M',value:'滨州市'},
-        {id:'鲁N',value:'德州市'},
-        {id:'鲁P',value:'聊城市'},
-        {id:'鲁Q',value:'临沂市'},
-        {id:'鲁R',value:'菏泽市'},
-        {id:'鲁S',value:'莱芜市'},
-        {id:'鲁U',value:'青岛市增补'},
-        {id:'鲁V',value:'潍坊市增补'}
-    ];
+    var strJson = [{
+        id: 0, value: '山东', childs: [
+            {id: '鲁A', value: '济南市'},
+            {id: '鲁B', value: '青岛市'},
+            {id: '鲁C', value: '淄博市'},
+            {id: '鲁D', value: '枣庄市'}
+        ]
+    }, {
+        id: 1, value: '浙江', childs: [
+            {id: '浙A', value: '杭州市'},
+            {id: '浙B', value: '宁波市'},
+            {id: '浙C', value: '温州市'},
+            {id: '浙D', value: '绍兴市'}
+        ]
+    }, {
+        id: 2, value: '安徽', childs: [
+            {id: '皖B', value: '芜湖'},
+            {id: '皖J', value: '黄山'},
+            {id: '皖R', value: '池州'},
+            {id: '皖S', value: '毫州'}
+        ]
+    }];
     var mobileSelect2 = new MobileSelect({
         trigger: '#one',
         title: '地区选择',
@@ -97,10 +107,29 @@
             {data:strJson}
         ],
         callback:function(indexArr, data){
-            $("#two").html(data[0].id);
+            $("#one").html(data[1].value);
+            $("#two").html(data[1].id);
             // console.log(data); //返回选中的json数据
         }
     });
+    //-----------车牌所属选择--------------
+    var  carPlate=[
+        {id: '0', value: '鲁A'},
+        {id: '1', value: '鲁B'},
+        {id: '2', value: '鲁C'},
+        {id: '3', value: '鲁D'}
+    ]
+    var mobileSelect4 = new MobileSelect({
+        trigger: '#two',
+        title: '车牌所属',
+        wheels: [
+            {data:carPlate}
+        ]
+    });
+    //-----------车牌号验证--------------
+    //var re=/^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+
+
 //-----------下面为验证码--------------
     var nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
         'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
@@ -171,7 +200,7 @@
     //弹出框效果
     $(".license").click(function(){
         layer.open({
-            content: '<h2 style="margin-bottom:15px; font-size:1.6rem;">车架号在哪？</h2><p><img src="images/1.png" class="img-full"> </p>',
+            content: $(".licenseBox").html(),
             style: 'background-color:#fff; color:#444; border:none;border-radius:18px;'
         });
     });
