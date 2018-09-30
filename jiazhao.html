@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>山东省驾证记分查询</title>
+    <link href="js/needcss/layer.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0;-webkit-appearance: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-sizing: border-box; }
+        html { -webkit-text-size-adjust: none; font-size:62.5%; position: relative;}
+        body { max-width: 640px; margin: 0 auto; background:#e7eaf2; color: #333;font-family: 'Microsoft Yahei'; font-size:1.4rem; }
+        *:focus { outline: none; }
+        ul, li { list-style: none; }
+        img { border: none; }
+        a { text-decoration: none; }
+        /*图片全屏*/
+        .img-full {width: 100%; margin: 0 auto; display: block; }
+        /*盒模型*/
+        .box { display: box; display: -webkit-box; display: -moz-box; width: 100%; }
+        .box .box-flex { -webkit-box-flex: 1; -moz-box-flex: 1; box-flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+        /*--------------------表单输入框暂满整个框[niu] 2015-07-06------------*/
+        .input-full { width: 100%; height: 100%; border: none; padding: 0 10px; line-height: 22px; }
+        .input-full:focus { outline: none; }
+        .form-fields{margin-top:15px;}
+        .form-fields .box{  background:#fff;-webkit-box-pack: center;
+            -webkit-box-align: center; position:relative;height:5.2rem; }
+        .form-fields .box:after {
+            content: '';
+            border-bottom: 1px solid #efefef;
+            left: 20px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .form-fields .box:first-child{border-top:1px solid #efefef;}
+        .form-fields .box:first-child:after{border:none;}
+        .form-fields .box:nth-last-of-type(2){border-bottom:1px solid #efefef;}
+        .form-fields .input-full{line-height:2.7rem;font-size:1.6rem;}
+        .logo{width:2.2rem;height:2.2rem;  margin-left:2rem;}
+        .btn-big{-webkit-appearance: none;display: block;background: -webkit-linear-gradient(left, #ff9815 , #ffc92f);  background: -o-linear-gradient(right, #ff9815 , #ffc92f);  background: -moz-linear-gradient(right, #ff9815 , #ffc92f);  background: linear-gradient(to right, #ff9815 , #ffc92f); /* 标准的语法 */  width: 92%;  margin: 45px auto 10px;height: 42px;line-height: 42px;border: none;color: #fff;font-size: 1.6rem;font-weight: bold;border-radius: 3px;}
+        /*字体图标*/
+        @font-face{
+            font-family:'chaxun_icomoon';
+            src:url(fonts/chaxun_icomoon.ttf);
+        }
+        [class^="icon-"], [class*=" icon-"]{
+            font-family:'chaxun_icomoon' !important;
+            font-style:normal;
+        }
+        .icon-jiazhao:before{
+            content:"\e907";
+        }
+        .icon-tishi:before{
+            content:"\e908";
+        }
+        .icon-dangan:before{
+            content:"\e905";
+        }
+        .icon-jiazhao{font-size:2.4rem; color:#bbb;}
+        .icon-tishi{font-size:2rem; color:#ddd;margin:1rem 1.5rem 0.5rem;display: block;}
+        .icon-dangan{font-size:2.4rem; color:#bbb;}
+        .info{    padding-bottom: 0.5rem; color:#888;
+            margin: 6rem 1.5rem 2rem;
+            border-bottom: 1px solid #ccc;}
+        .chaxun-jilu{}
+        .chaxun-jilu .info{margin-bottom:0.5rem;margin-top:3rem;}
+        .chaxun-jilu .info span{font-size: 1.2rem;
+            color: #aaa;}
+        .jilu-wrap{margin-left:1.5rem;}
+        .jilu-wrap p{    padding:0.2rem;
+            border: 1px solid #5d9ceb;
+            display: inline-block;
+            border-radius: 3px;
+            position:relative;
+            margin-right:1rem;
+        }
+        .jilu-wrap span{
+            position:absolute;
+            right:-0.9rem;
+            top:-0.9rem;
+            display:none;
+        }
+        .btn-small {
+            background-color: #5d9ceb;
+            color: #fff;
+            font-size: 1.4rem;
+            padding: 0.8rem 1rem;
+            display: inline-block;
+            border-radius: 2px;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+<section class="form-fields">
+    <div class="box">
+       <div class="logo"><i class="icon-jiazhao"></i></div>
+        <div class="box-flex"><input  class="input-full" value="" maxlength="11" type="text" placeholder="驾驶证号"></div>
+        <div class=" license">
+            <i class="icon-tishi"></i>
+        </div>
+    </div>
+    <div class="box">
+        <div class="logo"><i class="icon-dangan"></i></div>
+        <div class="box-flex"><input  class="input-full" value="" maxlength="11" type="text" placeholder="档案编号后四位"></div>
+        <div class="file">
+            <i class="icon-tishi"></i>
+        </div>
+    </div>
+   <a href="jiazhao-jieguo.html"><div class="btm-btn"><input id="btn-true" class="btn-big" type="button" value="立即查询"></div></a>
+</section>
+<section class="chaxun-jilu">
+    <p class="info" style="border:none;">查询记录<span>(长按可清除)</span></p>
+    <div class="jilu-wrap">
+        <p data-href="http://www.baidu.com"><input class="btn btn-small" type="button" value="京N321309"><span class="chaxun-close"><img src="images/chaxun-close.png" width="24"></span></p>
+        <p data-href="http://www.baidu.com"><input class="btn btn-small" type="button" value="京N321310"><span class="chaxun-close"><img src="images/chaxun-close.png" width="24"></span></p>
+    </div>
+</section>
+<section>
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/layer.js"></script>
+<script>
+$(function(){
+    $(".license").click(function(){
+        layer.open({
+            content: '<h2 style="margin-bottom:15px; font-size:1.6rem;">驾驶证号在哪？</h2><p><img src="images/jiazhao1.jpg" class="img-full"> </p>',
+            style: 'background-color:#fff; color:#444; border:none;border-radius:18px;'
+        });
+    });
+    $(".file").click(function(){
+        layer.open({
+            content: '<h2 style="margin-bottom:15px; font-size:1.6rem;">档案编号在哪？</h2><p><img src="images/jiazhao2.jpg" class="img-full"> </p>',
+            style: 'background-color:#fff; color:#444; border:none;border-radius:18px;'
+        });
+    });
+})
+var timeOutEvent=0;
+$(function(){
+    $(".jilu-wrap p").on({
+        touchstart: function(e){
+            var index=$(this).index();
+            timeOutEvent = setTimeout("longPress("+index+")",500);
+            e.preventDefault();
+        },
+        touchmove: function(){
+            clearTimeout(timeOutEvent);
+            timeOutEvent = 0;
+        },
+        touchend: function(){
+            clearTimeout(timeOutEvent);
+            if(timeOutEvent!=0){
+                var objHref=$(this).attr('data-href');
+                window.location.href=objHref;
+                //alert("你这是点击，不是长按");
+            }
+            return false;
+        }
+    })
+});
+
+
+function longPress(i){
+    timeOutEvent = 0;
+    $(".jilu-wrap p:eq("+i+")").find("span").show();
+}
+$(".chaxun-close").on({
+    touchstart: function(e){
+        $(this).parents("p").fadeOut(500);
+        e.preventDefault();
+        return false;
+    }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>张三</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+        html{-webkit-text-size-adjust:none;font-size:62.5%;}
+        body{background-color:#f0f0f0;max-width:640px;margin:0 auto;box-sizing:border-box;color:#414141;font-family:'Microsoft Yahei';padding-bottom:44px;font-size:1.4rem;}
+        *:focus{outline:none;}
+        ul, li{list-style:none;}
+        img{border:none;}
+        a{text-decoration:none;}
+        a, a:link, a:hover, a:visited{color:#414141;}
+        /*图片全屏*/
+        .img-full{width:100%;margin:0 auto;display:block;}
+        /*盒模型*/
+        .box{display:box;display:-webkit-box;display:-moz-box;width:100%;}
+        .box .box-flex{-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;display:block;}
+        .box .side{display:block;}
+        .Arial{font-family:Arial, Helvetica, sans-serif;}
+        article, section{background-color:#fff;font-size:1.3em;}
+        article{width:100%;display:block;position:relative;height:30%;color:#fff;overflow:hidden;font-size:1.4em;background: -webkit-linear-gradient(left, #ff9815 , #ffc92f);  background: -o-linear-gradient(right, #ff9815 , #ffc92f);  background: -moz-linear-gradient(right, #ff9815 , #ffc92f);  background: linear-gradient(to right, #ff9815 , #ffc92f);}
+        article time{font-size:1rem;margin:12px 10px;}
+        article .points{text-align:center;display:block;position:absolute;top:4rem;width:150px;font-size:1.6rem;}
+        article .points .Arial{font-size:6rem;margin-right:0.3rem;vertical-align:-40%;}
+        article .preview{width:150px;margin:5rem auto 4rem;position:relative;}
+        article .preview p{font-size:1.2rem;left:54px;position:absolute;bottom:1rem;}
+        /*字体图标*/
+        @font-face{font-family:'chaxun_icomoon';src:url(fonts/chaxun_icomoon.ttf);}
+        [class^="icon-"], [class*=" icon-"]{font-family:'chaxun_icomoon' !important;font-style:normal;}
+        .icon-dangan:before{content:"\e903";}
+        .icon-jiazhao:before{content:"\e906";}
+        .icon-youxiao:before{content:"\e90a";}
+        .icon-dangan{font-size:1.6rem;}
+        .icon-jiazhao{font-size:1.7rem;}
+        .icon-youxiao{font-size:1.4rem;}
+        .info{padding:10px 15px 12px;background:#fff;}
+        .info .box{border-bottom:1px solid #efefef;-webkit-box-pack:center;-webkit-box-align:center;padding:15px 0;}
+        .info .box:last-child{border:none;}
+        .info i{color:#fff;display:inline-block;}
+        .info dt{background:#f00;text-align:center;border-radius:50%;width:35px;height:35px;line-height:33px;display:block;margin-right:15px;}
+        .info h3{font-size:1.4rem;color:#bbb;margin-bottom:0.8rem;font-weight:normal;}
+        .info p{font-size:2.2rem;color:#616161;}
+        @media screen and (min-width:330px){html{font-size:70%;}
+            article .points{top:3.5rem;}
+            article .preview p{left:50px;}
+            article .points{font-size:1.4rem;}
+            article .points .Arial{font-size:5.5rem;vertical-align:-44%;}}
+    </style>
+</head>
+<body>
+<!--标题区域-->
+<article>
+    <div class="preview">
+        <canvas width=150 height=150 id="canvas-preview"></canvas>
+        <div class="points"><span id="mark" class="Arial"></span>分</div>
+        <p>累计记分</p>
+    </div>
+</article>
+
+<section class="info">
+    <dl class="box">
+        <dt style="background-color:#65bffe"><i class="icon icon-dangan"></i></dt>
+        <dd class="box-flex">
+            <h3>档案编号</h3>
+
+            <p class="Arial">330101134856</p>
+        </dd>
+    </dl>
+    <dl class="box">
+        <dt style="background-color:#ff9d2e"><i class="icon icon-jiazhao"></i></dt>
+        <dd class="box-flex">
+            <h3>驾驶证号</h3>
+
+            <p class="Arial">210804197409191018</p>
+        </dd>
+    </dl>
+    <dl class="box">
+        <dt style="background-color:#50cd7b"><i class="icon icon-youxiao"></i></dt>
+        <dd class="box-flex">
+            <h3>有效期至</h3>
+
+            <p class="Arial">2016年12月31日</p>
+        </dd>
+    </dl>
+</section>
+<script src="js/gauge.js"></script>
+<script>
+    var currentValue = '2';  //当前分数
+    document.getElementById("mark").innerHTML = currentValue;
+    var opts = {
+        lines: 12, // The number of lines to draw
+        angle: 0.28, // The length of each line
+        lineWidth: 0.03, // The line thickness
+        colorStart: '#ddd',   // Colors
+        colorStop: '#fff',    // just experiment with them
+        strokeColor: '#dd7301',   // to see which ones work best for you
+        shadowColor: "#ff8601",
+        generateGradient: true
+    };
+    var target = document.getElementById('canvas-preview'); // your canvas element
+    var gauge = new Donut(target).setOptions(opts); // create sexy gauge!
+    gauge.maxValue = 12; // set max gauge value
+    gauge.animationSpeed = 32; // set animation speed (32 is default value)
+    gauge.set(currentValue); // set actual value
+
+</script>
+</body>
+</html>

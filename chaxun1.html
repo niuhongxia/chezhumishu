@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title></title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link href="css/iconfont.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="banner">
+<img src="images/baner.png" width="100%">
+</div>
+<ul class="center" data-toggle="distpicker">
+    <li class="sli">
+        <ul>
+            <li><i class="icon iconfont">&#xe6b0;</i></li>
+            <li><div class="form-control" id="province7">济南</div></li>
+            <li><i class="icon iconfont">&#xe600;</i></li>
+        </ul>
+    </li>
+    <li class="sli">
+        <ul>
+            <li><i class="icon iconfont">&#xe607;</i></li>
+            <li><div class="form-control" id="city7">鲁A</div></li>
+            <li><input type="text" placeholder="车牌号码" onfocus="javascript:if(this.value=='请输入内容')this.value='';"></li>
+        </ul>
+    </li>
+    <li class="sli">
+        <ul>
+            <li><i class="icon iconfont">&#xe635;</i></li>
+            <li><div id="trigger3">小型车</div></li>
+            <li><i class="icon iconfont">&#xe600;</i></li>
+        </ul>
+    </li>
+    <li class="sli">
+        <ul>
+            <li><i class="icon iconfont">&#xe62f;</i></li>
+            <li><input type="text" placeholder="请输入发动机后4位"  onfocus="javascript:if(this.value=='请输入内容')this.value='';"></li>
+            <li><i class="icon iconfont">&#xe626;</i></li>
+        </ul>
+    </li>
+    <li class="sli">
+        <ul>
+            <li><i class="icon iconfont">&#xe671;</i></li>
+            <li><input type="text" class="topAlign" id="verify" placeholder="请输入验证码" name="verify" required>
+                <canvas width="100" height="40" id="verifyCanvas"></canvas>
+            <li><img id="code_img"></li>
+        </ul>
+    </li>
+</ul>
+<a href="#"><div class="btn">立即查询</div></a>
+</body>
+</html>
