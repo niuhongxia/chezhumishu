@@ -127,6 +127,12 @@ input[type="radio"] {
           box-sizing: border-box;
 }
 
+/*盒模型*/
+.box { display: box; display: -webkit-box; display: -moz-box; width: 100%; }
+
+.box .box-flex { -webkit-box-flex: 1; -moz-box-flex: 1; box-flex: 1; display: block; }
+
+.box .side { display: block; }
 
 
 
@@ -154,9 +160,6 @@ input[type="radio"] {
 .Right{
   float: right;
 }
-
-
-// html {height: 100%;}
 body {
   min-width: 320px; 
   max-width: 1920px; 

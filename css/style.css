@@ -27,21 +27,6 @@ a{
 	margin:0 auto;
 	display:block;
 }
-/*盒模型*/
-.box{
-	display:box;
-	display:-webkit-box;
-	display:-moz-box;
-	width:100%;
-}
-.box .box-flex{
-	-webkit-box-flex:1;
-	-moz-box-flex:1;
-	box-flex:1;
-	overflow:hidden;
-	display:block;
-}
-
 @font-face {font-family: "iconfont";
 	src: url('../fonts/iconfont.eot'); /* IE9*/
 	src: url('../fonts/iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
