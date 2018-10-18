@@ -5,33 +5,91 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title></title>
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-    <link href="css/iconfont.css" type="text/css" rel="stylesheet">
+    <link href="css/global_czms.css" type="text/css" rel="stylesheet">
+    <link href="css/style_czms.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/mobileSelect.css">
-    <script src="js/iconfont.js" type="text/javascript"></script>
+    <script src="js/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="js/layer.js"></script>
     <script src="js/mobileSelect.js" type="text/javascript"></script>
 </head>
-<body>
-<ul class="center center1" data-toggle="distpicker">
-    <li class="sli"><span>车牌号码</span><input type="text" placeholder="请输入发动机后4位"  onfocus="javascript:if(this.value=='请输入内容')this.value='';"></li>
-    <li class="sli">
-        <span>车型</span>
-        <div id="trigger3" style="margin-left: 4%;display: inline-block;">小型车<i class="icon iconfont">&#xe600;</i></div>
-
-    </li>
-    <li class="sli"><span>车架号</span><input type="text" placeholder="请输入车架号后4位"  onfocus="javascript:if(this.value=='请输入内容')this.value='';"></li>
-    <li class="sli"><span>手机号码</span><input type="text" placeholder="请输入"  onfocus="javascript:if(this.value=='请输入内容')this.value='';"></li>
-</ul>
-<a href="yysc_scsj.html"><div class="btn1"><button >立即绑定</button></div></a>
+<body class="bg_fa">
+<section class="get_info2">
+    <div class="box">
+        <label class="side">车牌号码</label>
+        <input class="box-flex input-full" id="plate" type="text" placeholder="请输入车牌号码" value="鲁">
+    </div>
+    <div class="box">
+        <label class="side">车型</label>
+        <div id="trigger3" class="box-flex select-full icon_after icon_arrowDown"
+             style="display: inline-block;">小型车
+        </div>
+    </div>
+    <div class="box">
+        <label class="side">车架号</label>
+        <input class="box-flex input-full" type="text" placeholder="车架号后4位"  onfocus="javascript:if(this.value=='车架号后4位')this.value='';">
+        <p class="license" style="color: #888;line-height: 40px;margin-left: 10px;"><i class="icon iconfont">&#xe626;</i></p>
+    </div>
+    <div class="box">
+        <label class="side">手机号码</label>
+        <input class="box-flex input-full" type="text" placeholder="请输入"  onfocus="javascript:if(this.value=='请输入')this.value='';" id="telphone">
+    </div>
+</section>
+<a href="yysc_scsj.html"><div class="btn">立即绑定</div></a>
+<div class="licenseBox" style="display: none;"><h2 style="margin-bottom:15px; font-size:18px;font-weight: normal;">车架号在哪？</h2><p><img src="images/cjh.jpg" class="img-full"></p></div>
 <script type="text/javascript">
     var weekdayArr2=['小型车','大型车'];
     var mobileSelect3 = new MobileSelect({
         trigger: '#trigger3',
-        title: '单项选择',
+        title: '车型选择',
         wheels: [
             {data: weekdayArr2}
         ],
-        position:[2] //初始化定位 打开时默认选中的哪个  如果不填默认为0
+        position:[0] //初始化定位 打开时默认选中的哪个  如果不填默认为0
+    });
+    //弹出框效果
+    $(".license").click(function(){
+        layer.open({
+            content: $(".licenseBox").html(),
+            style: 'background-color:#fff; color:#444; border:none;border-radius:18px;'
+        });
+    });
+    //-----------车牌号验证--------------
+    var re_plate=/^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+    $("#plate").on('blur',function(){
+        var plateVal=$(this).val();
+        if(plateVal=='鲁'){
+            layer.open({
+                content: '请输入车牌号码！'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }
+        else if(plateVal.search(re_plate)==-1){
+            layer.open({
+                content: '车牌号码输入有误！'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        };
+    });
+    //-----------手机号验证---------
+    var re_telphone=/0?(13|14|15|18)[0-9]{9}/;
+    $("#telphone").on('blur',function(){
+        var plateVal=$(this).val();
+        if(plateVal==''){
+            layer.open({
+                content: '请输入手机号码！'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        }
+        else if(plateVal.search(re_telphone)==-1){
+            layer.open({
+                content: '手机号码输入有误！'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });
+        };
     });
 </script>
 </body>

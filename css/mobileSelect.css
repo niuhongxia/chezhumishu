@@ -22,7 +22,7 @@
   display: block;
   position: fixed;
   z-index: 889;
-  color: black;
+  color: #353535;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
   bottom: -350px;
@@ -48,6 +48,7 @@
   position: relative;
   text-align: center;
   line-height: 45px;
+  font-size: 1.4rem;
 }
 .mobileSelect .content .btnBar .cancel,
 .mobileSelect .content .btnBar .ensure {
@@ -59,14 +60,15 @@
 }
 .mobileSelect .content .btnBar .cancel {
   left: 0;
-  color: #666;
+  color: #888;
 }
 .mobileSelect .content .btnBar .ensure {
   right: 0;
-  color: #1e83d3;
+  color: #ff9815;
 }
 .mobileSelect .content .btnBar .title {
   font-size: 15px;
+  font-size: 1.4rem;
 }
 .mobileSelect .content .panel:after {
   content: ".";
@@ -107,6 +109,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 1.4rem;
 }
 .mobileSelect .content .panel .selectLine {
   height: 40px;

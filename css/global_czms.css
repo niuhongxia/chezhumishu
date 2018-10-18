@@ -2,7 +2,7 @@
 
 html { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-size: 62.5%; }
 
-body { max-width: 640px; margin: 0 auto; color: #414141; font-family: Arial, 'Microsoft Yahei'; font-size: 14px; font-size: 1.4rem; line-height: 1.5em; }
+body { max-width: 640px; margin: 0 auto; color: #353535; font-family: Arial, 'Microsoft Yahei'; font-size: 14px; font-size: 1.4rem; line-height: 1.5em; }
 
 *:focus { outline: none; }
 
@@ -43,32 +43,32 @@ th, td { height: 4.4rem; }
 /*英文字体*/
 .Arial { font-family: Arial, Helvetica, sans-serif; }
 
-input, select, textarea { font-family: 'Microsoft Yahei' !important; font-size: 1.4rem; }
+input, select, textarea { font-family:Arial, 'Microsoft Yahei' !important; color: #353535; font-size: 1.4rem; }
 
 /*字体大小*/
-.fz10 { font-size: 1rem; }
+.fz10 { font-size: 1rem !important; }
 
-.fz11 { font-size: 1.1rem; }
+.fz11 { font-size: 1.1rem !important; }
 
-.fz12 { font-size: 1.2rem; }
+.fz12 { font-size: 1.2rem !important; }
 
-.fz13 { font-size: 1.3rem; }
+.fz13 { font-size: 1.3rem !important; }
 
-.fz14 { font-size: 1.4rem; }
+.fz14 { font-size: 1.4rem !important; }
 
-.fz15 { font-size: 1.5rem; }
+.fz15 { font-size: 1.5rem !important; }
 
-.fz16 { font-size: 1.6rem; }
+.fz16 { font-size: 1.6rem !important; }
 
-.fz18 { font-size: 1.8rem; }
+.fz18 { font-size: 1.8rem !important; }
 
-.fz20 { font-size: 2rem; }
+.fz20 { font-size: 2rem !important; }
 
-.fz21 { font-size: 2.1rem; }
+.fz21 { font-size: 2.1rem !important; }
 
-.fz22 { font-size: 2.2rem; }
+.fz22 { font-size: 2.2rem !important; }
 
-.fz24 { font-size: 2.4rem; }
+.fz24 { font-size: 2.4rem !important; }
 
 /*内间距*/
 .pt2 { padding-top: 0.2rem; }
@@ -201,7 +201,7 @@ input, select, textarea { font-family: 'Microsoft Yahei' !important; font-size: 
 .mr20 { margin-right: 2rem !important; }
 
 /*盒模型*/
-.box { display: box; display: -webkit-box; display: -moz-box; width: 100%; }
+.box { display: box; display: -webkit-box; display: -moz-box; width: 100%;    -webkit-box-align: center;}
 
 .box .box-flex { -webkit-box-flex: 1; -moz-box-flex: 1; box-flex: 1; display: block; }
 
@@ -257,7 +257,63 @@ input, select, textarea { font-family: 'Microsoft Yahei' !important; font-size: 
 .no-data { height: 4rem; line-height: 4rem; text-align: center; font-size: 1.2rem; letter-spacing: 0.2rem; }
 
 /*--------------------表单输入框暂满整个框[niu] 2015-07-06------------*/
-.input-full { width: 100%; height: 100%; border: none; padding: 0 1rem; line-height: 2.2rem; }
+.input-full,.select-full { width: 100%; height: 100%; border: none; padding:12px 1rem; line-height: 20px; }
 
-.input-full:focus { outline: none; }
+.input-full:focus,.select-full:focus { outline: none; }
 
+/*常用背景色*/
+.bg_fa{background-color: #fafafa;}
+.bg_f0{background-color: #f0f0f0;}
+.bg_fff{background-color: #ffffff;}
+/*字体图标*/
+@font-face {
+    font-family: 'iconfont';  /* project id 748549 */
+    src: url('//at.alicdn.com/t/font_748549_h01nazcjprc.eot');
+    src: url('//at.alicdn.com/t/font_748549_h01nazcjprc.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_748549_h01nazcjprc.woff') format('woff'),
+    url('//at.alicdn.com/t/font_748549_h01nazcjprc.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_748549_h01nazcjprc.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:18px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon_after{position: relative;
+    padding-right: 25px;
+    cursor: pointer;}
+.icon_after:after{
+    cotent:'';
+    font-family:"iconfont" !important;
+    font-size:12px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    right: 0;
+}
+.icon_arrowDown:after{
+    content: '\e93d';
+}
+.btn{
+    width: 80%;
+    line-height: 45px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 2% auto 0;
+    color:#fff;
+    font-weight: normal;
+    background: -webkit-linear-gradient(left, #ff9815 , #ffc92f); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #ff9815 , #ffc92f); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #ff9815 , #ffc92f); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #ff9815 , #ffc92f); /* 标准的语法 */
+}
+fieldset{border:none;border-top:1px solid #dedada; text-align:center;}
+legend{padding:0 2rem;color:#888;font-size:12px;}
